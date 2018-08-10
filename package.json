@@ -1,0 +1,16 @@
+{
+  "name": "vanillaoffers",
+  "version": "1.0.0",
+  "description": "A website to get all the offers that your stomach needs and your wallet adores",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raunak Jodhawat",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.7"
+  }
+}

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var schema = mongoose.schema;
+var schema = mongoose.Schema;
 
 var newSchema = new schema({
     RestaurantName: String,
@@ -14,7 +14,9 @@ var newSchema = new schema({
         enum:['active','inactive'],
         default: 'active',
         type: String
-    }
+    },
+    validityToDate: String,
+    validityFromDate: String
 });
 
 module.exports = mongoose.model('offers',newSchema);

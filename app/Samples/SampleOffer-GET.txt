@@ -1,0 +1,24 @@
+# Sample get requests
+1. Get all offers
+http://localhost:3000/offers/all
+
+// Working on the all the things written down
+get offers by RestaurantName
+get offers by MainMenuOptionType (one or multiple)
+get offers by Location (Future update) - google map based
+get offers by PinCode
+get current offers (one which can be used right now or in next 8 hours)
+get offer by id
+get all offers (with these checks below)
+
+before displaying any offer perform these checks
+1. Status must be active
+2. Current date must be < ValidityToDate
+3. current date must be > ValidityFromDate
+
+display these information with the offers
+1. RestaurantName
+2. Details
+3. Location
+4. time of offer
+5. Validity

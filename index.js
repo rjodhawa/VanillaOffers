@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
 // Connect to MongoDB on mlab
-mongoose.connect(configInfo);
+mongoose.connect(configInfo,{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());

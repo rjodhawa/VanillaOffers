@@ -25,7 +25,7 @@ var newSchema = new schema({
     
     DateOfPostingOffer: {
         type: Date,
-        default: Date.now()
+        default: Date()
     },
     Status: {
         enum:['active','inactive'],

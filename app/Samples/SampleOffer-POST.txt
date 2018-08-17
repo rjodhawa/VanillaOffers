@@ -1,10 +1,10 @@
 {
     "RestaurantName": "Prince Of India",
-    "TimeOfOffer": "10:00 AM to 1:00 PM",
-    "Location": "5532 Oakland St",
-    "Details": "get 50% off food products purchased for delivery or take out",
     "MainMenuOptionType":["delivery","Takeout"],
-    "Status": "active",
-    "validityToDate": "08-20-2018",
-    "validityFromDate": "08-10-2018"
+    "Details": "get 50% off food products purchased for delivery or take out",
+    "Location": ["5532 Oakland St","1806 Shady Avenue"],
+    "PinCode":[54321,12321],
+    "TimeOfOfferValidityDaily": "10:00 AM to 1:00 PM",
+    "ValidityFromDate": "08/20/2018",
+    "ValidityToDate": "08/20/2018"
 }

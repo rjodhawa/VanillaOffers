@@ -1,5 +1,5 @@
 # API Endpoints
-##1. POST Offers 
+## POST Offers 
 Offers can be posted on /offers endpoint (localhost:3000/offers). For testing purposes I would suggest you to use postman to test the post service. Also a sample body Schema is given in the sample folder (sample/sampleOffer-post.txt)
 
 # Warning:
@@ -19,3 +19,26 @@ You are free to change these values while programming
 
 # Sample folder
 this folder contains basic and sample offer information, which I used for testing purposes. Feel free to use these sample values or create your own under the same line.
+
+# Validations performed
+(Validation that will be resolved via UI constraints)
+// Validation with main menu  MainMenuOptionType
+    //Main menu option type must be one from the list
+
+(Validation in later updates)
+// Validation with location
+    // Location must be a proper address on google maps.
+
+// Validation with pincode
+    // It must be valid US pincode (later after goole map integration)
+        
+// Validation with daily time of offer
+    // check if string parsing is correct (must contain "to")
+    // Must contain valid time
+    // startTime must be before endTime(startTime to endTime)
+        
+// Validation with Dates
+    // You can't add an offer which started before today's date
+        //ValidityFromDate > current date
+    // You can't add on offer which ended before start date
+            // ValidityToDate > ValidityFromDate

@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-const date = require('date-and-time');
 var schema = mongoose.Schema;
 
 var newSchema = new schema({
@@ -18,6 +17,8 @@ var newSchema = new schema({
     }],
     
     TimeOfOfferValidityDaily: String,
+    DailyStartTime: String,
+    DailyStopTime: String,
     
     ValidityFromDate: Date,
     ValidityToDate: Date,
@@ -32,5 +33,8 @@ var newSchema = new schema({
         type: String
     }
 });
-
+newSchema.pre('save',function(){
+    this.DailyStartTime = (this.TimeOfOfferValidityDaily.split(" to "))[0];
+    this.DailyStopTime = (this.TimeOfOfferValidityDaily.split(" to "))[1];
+});
 module.exports = mongoose.model('offers',newSchema);

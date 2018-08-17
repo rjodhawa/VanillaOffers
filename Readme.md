@@ -20,21 +20,11 @@ You are free to change these values while programming
 # Sample folder
 this folder contains basic and sample offer information, which I used for testing purposes. Feel free to use these sample values or create your own under the same line.
 
-# Validations performed
+# Validations
 (Validation that will be resolved via UI constraints)
 // Validation with main menu  MainMenuOptionType
     //Main menu option type must be one from the list
-
-(Validation in later updates)
-// Validation with location
-    // Location must be a proper address on google maps.
-
-// Validation with pincode
-    // It must be valid US pincode (later after goole map integration)
-        
 // Validation with daily time of offer
-    // check if string parsing is correct (must contain "to")
-    // Must contain valid time
     // startTime must be before endTime(startTime to endTime)
         
 // Validation with Dates
@@ -42,3 +32,11 @@ this folder contains basic and sample offer information, which I used for testin
         //ValidityFromDate > current date
     // You can't add on offer which ended before start date
             // ValidityToDate > ValidityFromDate
+
+(Validation in later updates) -- Requires Google Maps Integration
+// Validation with location
+    // Location must be a proper address on google maps.
+
+// Validation with pincode
+    // It must be valid US pincode (later after goole map integration)
+        

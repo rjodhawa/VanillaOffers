@@ -48,6 +48,7 @@ exports.getOffersBySingleQuery = (req,res) => {
                 {'RestaurantName':req.query.name},
                 {'_id':req.query.id},
                 {'PinCode':req.query.pin},
+                {'MainMenuOptionType':{$in:(req.query.menu).split("-")}}
             ]
         },
         {'RestaurantName':1, '_id':0, 'Details':1, 'Location':1, 'TimeOfOfferValidityDaily':1, 'ValidityToDate':1, 'ValidityFromDate':1},
@@ -60,8 +61,6 @@ exports.getOffersBySingleQuery = (req,res) => {
             res.send("No offers available");
             return;
         }
-        
-
         res.send(result);
     });
 };

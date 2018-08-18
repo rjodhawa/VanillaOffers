@@ -24,6 +24,12 @@ This will list all the offers currently availale in the database, with performin
 GET /offers?name=xxx or GET /offers?pin=xxx or GET /offers?id=xxx  
 replace xxx with the search keyword
 
+3. Get all offers by Main menu type option
+GET /offers?menu=xxx-xxx-xxx  
+you can have one, two or multiple values in place of xxx  
+xxx can contain following values ['breakfast','lunch','dinner','delivery', 'Drinks & NightLife','Takeout'] (Case-senstive)  
+Please visit the sample/SampleOffer-GET to get a hint of how these queries will look like.    
+
 # Warning:
 While using the code, please be aware of changing username and password from the app/configurations/dbVanillaConfigInfo.json also make apporpriate changes to the index.js file
 

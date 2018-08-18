@@ -1,15 +1,24 @@
 # Sample get requests
-1. Get all offers
+1. Get all valid offers
 http://localhost:3000/offers/all
 
+2. Get all valid offers by RestaurantName
+http://localhost:3000/offers?name=xxx
+eg. http://localhost:3000/offers?name=Prince Of India
+
+3. Get all valid offers by PinCode
+http://localhost:3000/offers?pin=xxx
+eg. http://localhost:3000/offers?pin=54321
+
+4. get a offer by id
+http://localhost:3000/offers?id=xxx
+eg. http://localhost:3000/offers?id=5b773314f7f6d849284bd33c
+
 // Working on the all the things written down
-get offers by RestaurantName
 get offers by MainMenuOptionType (one or multiple)
 get offers by Location (Future update) - google map based
-get offers by PinCode
 get current offers (one which can be used right now or in next 8 hours)
-get offer by id
-get all offers (with these checks below)
+
 
 before displaying any offer perform these checks
 1. Status must be active

@@ -1,5 +1,5 @@
 var offerModel = require('./../models/offerModels');
-var date = require('date-and-time')
+var mongoose = require('mongoose');
 exports.addOffers = (req,res) =>{
     var newOffer = new offerModel({
         'RestaurantName': req.body.RestaurantName,
@@ -29,18 +29,39 @@ exports.getAllOffers = (req,res) => {
         {'RestaurantName':1, '_id':0, 'Details':1, 'Location':1, 'TimeOfOfferValidityDaily':1, 'ValidityToDate':1, 'ValidityFromDate':1},
         function(err,result){
         if(err) res.send(err);
-        var resultToDisplay ='';
-        result.forEach(resultElement=>{
-            resultToDisplay.concat(resultElement.RestaurantName + "\n" + resultElement.Details + "\n");
-            resultElement.Location.forEach(locations=>{
-                resultToDisplay.concat("\t"+locations + "\n");
-            });
-        });
 
         if(result.length===0){
             res.send("No offers available");
             return;
         }
+        res.send(result);
+    });
+};
+
+exports.getOffersBySingleQuery = (req,res) => {
+    offerModel.
+        find({
+            Status:{$eq:'active'},
+            ValidityFromDate:{$lt:Date.now()},
+            ValidityToDate:{$gt:Date.now()},
+            $or:[
+                {'RestaurantName':req.query.name},
+                {'_id':req.query.id},
+                {'PinCode':req.query.pin},
+            ]
+        },
+        {'RestaurantName':1, '_id':0, 'Details':1, 'Location':1, 'TimeOfOfferValidityDaily':1, 'ValidityToDate':1, 'ValidityFromDate':1},
+        function(err,result){
+        if(err) {
+            res.send(err);
+            return;
+        }
+        if(result.length===0){
+            res.send("No offers available");
+            return;
+        }
+        
+
         res.send(result);
     });
 };

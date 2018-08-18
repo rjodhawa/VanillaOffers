@@ -15,6 +15,7 @@ Please note down the id that is returned as a result. As that id would furthur b
 4. time of offer
 5. Validity  
 
+### Sample GET requests
 1. Get all Offers  
 GET /offers/all  
 This will list all the offers currently availale in the database, with performing certain prerequisite checks as stated above.  
@@ -33,18 +34,18 @@ This folder contains basic and sample offer information, which I used for testin
 
 # Validations
 (Validation that will be resolved via UI constraints)  
-    Validation with main menu  MainMenuOptionType  
-        Main menu option type must be one from the list  
-    Validation with daily time of offer  
-        startTime must be before endTime(startTime to endTime)  
-    Validation with Dates  
-        You can't add an offer which started before today's date  
-            ValidityFromDate > current date  
-        You can't add on offer which ended before start date  
-            ValidityToDate > ValidityFromDate  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Validation with main menu  MainMenuOptionType  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Main menu option type must be one from the list  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Validation with daily time of offer  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startTime must be before endTime(startTime to endTime)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Validation with Dates  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can't add an offer which started before today's date  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ValidityFromDate > current date  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can't add on offer which ended before start date  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ValidityToDate > ValidityFromDate  
 
 (Validation in later updates) -- Requires Google Maps Integration  
-    Validation with location  
-        Location must be a proper address on google maps.  
-    Validation with pincode  
-        It must be valid US pincode (later after goole map integration)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Validation with location  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location must be a proper address on google maps.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Validation with pincode  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It must be valid US pincode (later after goole map integration)  

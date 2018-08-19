@@ -1,3 +1,16 @@
+# Latest Updates
+I have added react basic script to the server app. /Server contains nodejs server code and /client contains the frontend code.
+
+Features: Once command to run and test the repo. Just do np run dev it starts both client and server.
+
+# Future Updates
+I will work on UI. Currently, Frontend and backend are just connected and their is nothing else for the page to display.
+
+# how to run
+1. git pull
+2. npm install
+3. npm run dev
+
 # API Endpoints
 ## POST Offers 
 Offers can be posted on /offers endpoint (localhost:3000/offers). For testing purposes I would suggest you to use postman to test the post service. Also a sample body Schema is given in the sample folder (sample/sampleOffer-post.txt)  

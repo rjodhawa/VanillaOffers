@@ -1,5 +1,6 @@
 {
   "name": "vanillafrontend",
+  "proxy": "http://127.0.0.1:5000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,8 +13,9 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "client": "cd Client && yarn start",
-    "server": "cd Server && nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\""
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

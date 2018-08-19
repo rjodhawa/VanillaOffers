@@ -16,5 +16,5 @@ var offerRoutes = require('./app/routes/offerRoutes');
 offerRoutes(app);
 
 // Start listening on the port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.listen(port);

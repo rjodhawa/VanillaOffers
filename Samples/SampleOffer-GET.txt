@@ -21,6 +21,8 @@ http://localhost:3000/offers?menu=delivery
 http://localhost:3000/offers?menu=Takeout
 
 // Working on the all the things written down
+6. get current offers (one which can be used right now or in next 8 hours)
+http://localhost:3000/offers/current
 get offers by Location (Future update) - google map based
 get current offers (one which can be used right now or in next 8 hours)
 

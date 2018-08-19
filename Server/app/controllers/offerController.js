@@ -1,5 +1,5 @@
 var offerModel = require('./../models/offerModels');
-var mongoose = require('mongoose');
+
 exports.addOffers = (req,res) =>{
     var newOffer = new offerModel({
         'RestaurantName': req.body.RestaurantName,
@@ -48,8 +48,10 @@ exports.getOffersBySingleQuery = (req,res) => {
                 {'RestaurantName':req.query.name},
                 {'_id':req.query.id},
                 {'PinCode':req.query.pin},
-                {'MainMenuOptionType':{$in:(req.query.menu).split("-")}}
-            ]
+                {'MainMenuOptionType':{$in:
+                    (typeof req.query.menu==='undefined'?"x":req.query.menu).split("-")
+                }}
+            ],
         },
         {'RestaurantName':1, '_id':0, 'Details':1, 'Location':1, 'TimeOfOfferValidityDaily':1, 'ValidityToDate':1, 'ValidityFromDate':1},
         function(err,result){

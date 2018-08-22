@@ -51,11 +51,21 @@ class App extends Component {
             <Nav pullRight>
               {
                 this.state.isAuthenticated
-                  ? <GoogleLogout
+                  ?<div> 
+                    <NavItem>
+                    <Link to="/postOffers">Post Offers</Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to="/myOffers">My Offers</Link>
+                  </NavItem>
+                  <NavItem>
+                    <GoogleLogout
                     buttonText="Logout"
                     onLogoutSuccess={logout}
                   >
                   </GoogleLogout>
+                  </NavItem>
+                  </div>
                   : <LinkContainer to="/loginGoogle">
                     <NavItem>
                       <GoogleLogin

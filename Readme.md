@@ -1,10 +1,23 @@
 # Latest Updates
-I have added react basic script to the server app. /Server contains nodejs server code and /client contains the frontend code.
+08/22/2018
+12:03 AM
+1. User can now login and logout (via google). I intend to addd facebook login soon.
+2. Anyone who visits the website can see all the offers currently available in the database.
 
+# Subtle information about the project structure
+I have added react basic script to the server app. /Server contains nodejs server code and /client contains the frontend code.
 Features: Once command to run and test the repo. Just do np run dev it starts both client and server.
 
 # Future Updates
-I will work on UI. Currently, Frontend and backend are just connected and their is nothing else for the page to display.
+This will be the flow that I will follow:
+### For home page (User logged out)
+1. Make the Home page UI a little different for a user who is logged in and for someone who is not. A logged in user will get three option (Post offer, update/delete/modify all offers posted by him/her, and view the offer)
+2. integrate google maps. Add search bar to get nearest offers
+3. Filter on the offers
+
+### Home page (User Logged in)
+1. create a page for user to post offers. with validations
+2. users can see the offer they posted and can edit it.
 
 # how to run
 1. git pull

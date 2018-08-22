@@ -31,7 +31,8 @@ xxx can contain following values ['breakfast','lunch','dinner','delivery', 'Drin
 Please visit the sample/SampleOffer-GET to get a hint of how these queries will look like.    
 
 # Warning:
-While using the code, please be aware of changing username and password from the app/configurations/dbVanillaConfigInfo.json also make apporpriate changes to the index.js file
+While using the code, please be aware of changing username and password from the app/configurations/dbVanillaConfigInfo.json also make apporpriate changes to the index.js file  
+As of now, the port has been changed to 4000 (Hard-coded). make sure you change the port according to your need.
 
 I am aware that hardcoding username and password like this, is not a good way. However, I plan to use hash and salt and verify these information with my server once I am through the initial development iteration. I hope you understand.
 

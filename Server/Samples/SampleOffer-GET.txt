@@ -1,28 +1,28 @@
 # Sample get requests
 1. Get all valid offers
-http://localhost:3000/offers/all
+http://localhost:4000/offers/all
 
 2. Get all valid offers by RestaurantName
-http://localhost:3000/offers?name=xxx
-eg. http://localhost:3000/offers?name=Prince Of India
+http://localhost:4000/offers?name=xxx
+eg. http://localhost:4000/offers?name=Prince Of India
 
 3. Get all valid offers by PinCode
-http://localhost:3000/offers?pin=xxx
-eg. http://localhost:3000/offers?pin=54321
+http://localhost:4000/offers?pin=xxx
+eg. http://localhost:4000/offers?pin=54321
 
 4. get a offer by id
-http://localhost:3000/offers?id=xxx
-eg. http://localhost:3000/offers?id=5b773314f7f6d849284bd33c
+http://localhost:4000/offers?id=xxx
+eg. http://localhost:4000/offers?id=5b773314f7f6d849284bd33c
 
 5. get all offers by Main menu option type ['breakfast','lunch','dinner','delivery', 'Drinks & NightLife','Takeout']
-http://localhost:3000/offers?menu=xxx-xxx-xxx
-eg. http://localhost:3000/offers?menu=delivery-Takeout
-http://localhost:3000/offers?menu=delivery
-http://localhost:3000/offers?menu=Takeout
+http://localhost:4000/offers?menu=xxx-xxx-xxx
+eg. http://localhost:4000/offers?menu=delivery-Takeout
+http://localhost:4000/offers?menu=delivery
+http://localhost:4000/offers?menu=Takeout
 
 // Working on the all the things written down
 6. get current offers (one which can be used right now or in next 8 hours)
-http://localhost:3000/offers/current
+http://localhost:4000/offers/current
 get offers by Location (Future update) - google map based
 get current offers (one which can be used right now or in next 8 hours)
 

@@ -30,11 +30,13 @@ exports.getAllOffers = (req,res) => {
         function(err,result){
         if(err) res.send(err);
 
-        if(result.length===0){
-            res.send("No offers available");
+        if(result.length!=0){
+            res.send(result);
             return;
         }
-        res.send(result);
+        else
+            res.send("No offers available")
+        
     });
 };
 

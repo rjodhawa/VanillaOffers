@@ -46,9 +46,10 @@ export default class Home extends Component {
                         {
                             this.state.items.map(item => (
                                 <div className ="Card">
+                                {console.log(item)}
                                 <h1>{item['RestaurantName']}</h1>
                                 <h2>{item['Details']}</h2>
-                                <h3>{item['TimeOfOfferValidityDaily']}</h3>
+                                <h3>Daily Validity:{item['DailyStartTime']} to{item['DailyStopTime']} </h3>
                                 <h4>{item['Location'].map(eachLocation =>(
                                     <p>{eachLocation}</p>
                                 ))

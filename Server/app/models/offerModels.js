@@ -4,7 +4,7 @@ var schema = mongoose.Schema;
 var newSchema = new schema({
     RestaurantName: String,
     MainMenuOptionType:[{
-        enum: ['breakfast','lunch','dinner','delivery', 'Drinks & NightLife','Takeout'],
+        enum: ['breakfast','lunch','dinner','delivery', 'Drinks','Takeout'],
         type: String
     }],
     Details: String,
@@ -12,11 +12,7 @@ var newSchema = new schema({
     Location: [{
         type: String
     }],
-    PinCode:[{
-        type: Number
-    }],
     
-    TimeOfOfferValidityDaily: String,
     DailyStartTime: String,
     DailyStopTime: String,
     
@@ -31,10 +27,8 @@ var newSchema = new schema({
         enum:['active','inactive'],
         default: 'active',
         type: String
-    }
+    },
+    userID: String,
 });
-newSchema.pre('save',function(){
-    this.DailyStartTime = (this.TimeOfOfferValidityDaily.split(" to "))[0];
-    this.DailyStopTime = (this.TimeOfOfferValidityDaily.split(" to "))[1];
-});
+
 module.exports = mongoose.model('offers',newSchema);

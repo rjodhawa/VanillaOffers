@@ -8,6 +8,18 @@
 1. User can now login and logout (via google). I intend to addd facebook login soon.
 2. Anyone who visits the website can see all the offers currently available in the database.
 
+# While posting an offer
+1. check is this.state gets everything needed for the form to post (without location) (done)
+2. check is server posts this offer to mlab (done)
+3. if the offer is visible on the home page (done)
+4. git push (done)
+5. push location => repeat above steps
+6. git push
+7. validations on post offer page (from date < to date. from time < to time)
+8. bug testing
+9. post offers CSS
+10. git push
+
 # Subtle information about the project structure
 I have added react basic script to the server app. /Server contains nodejs server code and /client contains the frontend code.
 Features: Once command to run and test the repo. Just do np run dev it starts both client and server.

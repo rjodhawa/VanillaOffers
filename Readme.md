@@ -1,4 +1,8 @@
 # Latest Updates
+08/27/2018
+2:58 AM
+1. googleID is stored in cookies, this information is used to decide if a person should be able to see myOffers and postOffers page. Only a logged in user can see theses pages.
+
 08/22/2018
 12:03 AM
 1. User can now login and logout (via google). I intend to addd facebook login soon.

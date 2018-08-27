@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
+import cookie from 'react-cookies';
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +8,8 @@ export default class Home extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            userId: cookie.load('userID') 
         };
     }
 
@@ -34,7 +36,7 @@ export default class Home extends Component {
         if (this.state.error) {
             return <div>Error getting the offers: {this.state.error.message}</div>;
         } else if (!this.state.isLoaded) {
-            return <div>Loading...</div>
+            return <div>Loading Offers...</div>
         } else {
 
             return (

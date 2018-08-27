@@ -11,7 +11,9 @@ exports.addOffers = (req,res) =>{
         'ValidityFromDate': req.body.ValidityFromDate,
         'ValidityToDate': req.body.ValidityToDate,
         'Status': req.body.Status,
-        'userID': req.body.userID
+        'userID': req.body.userID,
+        'Lat': req.body.Lat,
+        'Lon':req.body.Lon
     });
     newOffer.save(function(err,result){
         //If any error from mlab or any uncaught exception

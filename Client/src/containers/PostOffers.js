@@ -7,6 +7,7 @@ import 'flatpickr/dist/themes/material_green.css';
 import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 const mainMenuOptionType = [
     { value: 'breakfast', label: 'Breakfast' },
@@ -25,12 +26,14 @@ export default class PostOffers extends Component {
             restaurantName: '',
             details: '',
             mainMenuOptionTypes: [],
-            Location: [],
+            Location: '',
             DailyStartTime: '',
             DailyStopTime: '',
             ValidityFromDate: '',
             ValidityToDate: '',
-            Status:'active',
+            Status: 'active',
+            Lat: '',
+            Lon: '',
             userId: cookie.load('userID') || 'user-id-not-available'
         };
         this.handleMainMenuOptionChange = this.handleMainMenuOptionChange.bind(this);
@@ -41,6 +44,7 @@ export default class PostOffers extends Component {
         this.handleStopTimeChange = this.handleStopTimeChange.bind(this);
         this.handleFromDateChanges = this.handleFromDateChanges.bind(this);
         this.handleToDateChanges = this.handleToDateChanges.bind(this);
+        this.handleLocationSelect = this.handleLocationSelect.bind(this);
     }
 
     handleMainMenuOptionChange(event) {
@@ -57,20 +61,6 @@ export default class PostOffers extends Component {
         });
     }
 
-    handleLocationChange(event) {
-        let newValue = event.value;
-        let oldValue = this.state.mainMenuOptionTypes;
-
-        oldValue.indexOf(newValue) === -1 ?
-            oldValue.push(newValue) :
-            oldValue.pop(newValue);
-
-        console.log("Options selected:", oldValue);
-        this.setState({
-            Location: oldValue
-        });
-    }
-
     handleStartTimeChange(event) {
         this.setState({
             DailyStartTime: event
@@ -83,8 +73,10 @@ export default class PostOffers extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
-        axios.post('http://localhost:4000/offers',{
+        if(this.state.mainMenuOptionTypes.length!==0 & this.state.ValidityToDate !=='' &
+        this.state.Location!==''& this.state.ValidityFromDate!=='' &
+        this.state.DailyStartTime!==''& this.state.DailyStopTime!==''){
+        axios.post('http://localhost:4000/offers', {
             RestaurantName: this.state.restaurantName,
             Details: this.state.details,
             MainMenuOptionType: this.state.mainMenuOptionTypes,
@@ -93,22 +85,27 @@ export default class PostOffers extends Component {
             DailyStopTime: this.state.DailyStopTime,
             ValidityFromDate: this.state.ValidityFromDate,
             ValidityToDate: this.state.ValidityToDate,
-            Status:this.state.Status,
-            userID: cookie.load('userID')
+            Status: this.state.Status,
+            userID: cookie.load('userID'),
+            Lat: this.state.Lat,
+            Lon: this.state.Lon
         })
-        .then(function(response){
-            console.log(response);
-        })
-        .catch(function(error){
-            console.log(error);
-        });
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }else{
+            alert("Please fill out all the details before eubmitting the form");
+        }
     }
-    handleFromDateChanges(selectedDates, dateStr){
+    handleFromDateChanges(selectedDates, dateStr) {
         this.setState({
             ValidityFromDate: dateStr
         })
     }
-    handleToDateChanges(selectedDates, dateStr){
+    handleToDateChanges(selectedDates, dateStr) {
         this.setState({
             ValidityToDate: dateStr
         })
@@ -122,7 +119,25 @@ export default class PostOffers extends Component {
         this.setState({
             [name]: value
         });
-        
+
+    }
+    handleLocationChange(address) {
+        this.setState({
+            Location: address
+        });
+    }
+    handleLocationSelect(event) {
+        geocodeByAddress(event)
+            .then(results => getLatLng(results[0]))
+            .then(LatLng => {
+                console.log('success', LatLng)
+                this.setState({
+                    Lat: LatLng['lat'],
+                    Lon: LatLng['lng'],
+                    Location: event
+                });
+            })
+            .catch(error => console.log('error', error));
     }
     render() {
         const { userId } = this.state;
@@ -133,9 +148,9 @@ export default class PostOffers extends Component {
                         <div>
                             <form onSubmit={this.handleSubmit}>
                                 <label>Name:</label>
-                                <input type="text" name="restaurantName" 
-                                    placeholder="Name" onBlur={this.handleOtherChanges} 
-                                    /> <br /><br />
+                                <input type="text" name="restaurantName" required
+                                    placeholder="Name" onBlur={this.handleOtherChanges}
+                                /> <br /><br />
                                 <Select multi joinValues
                                     value={this.state.mainMenuOptionTypes}
                                     onChange={this.handleMainMenuOptionChange}
@@ -145,16 +160,46 @@ export default class PostOffers extends Component {
                                     }
                                 /><br />
 
-                                <textarea name="details" onBlur={this.handleOtherChanges} placeholder="Enter some details about the offer"></textarea><br /><br />
+                                <textarea required name="details" onBlur={this.handleOtherChanges} placeholder="Enter some details about the offer"></textarea><br /><br />
                                 <label>Select Locations for your restaurants</label>
-                                <Select multi joinValues
-                                    value={this.state.mainMenuOptionTypes}
+                                <PlacesAutocomplete
+                                    value={this.state.Location}
                                     onChange={this.handleLocationChange}
-                                    options={mainMenuOptionType}
-                                    placeholder={
-                                        JSON.stringify(this.state.mainMenuOptionTypes) === '[]' ? "Select All the location, where this offer is valid" : JSON.stringify(this.state.mainMenuOptionTypes)
-                                    }
-                                /><br />
+                                    onSelect={this.handleLocationSelect}
+                                >
+                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                        <div>
+                                            <input
+                                                {...getInputProps({
+                                                    placeholder: 'Search Places ...',
+                                                    className: 'location-search-input',
+                                                })}
+                                            />
+                                            <div className="autocomplete-dropdown-container">
+                                                {loading && <div>Loading...</div>}
+                                                {suggestions.map(suggestion => {
+                                                    const className = suggestion.active
+                                                        ? 'suggestion-item--active'
+                                                        : 'suggestion-item';
+                                                    // inline style for demonstration purpose
+                                                    const style = suggestion.active
+                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                    return (
+                                                        <div
+                                                            {...getSuggestionItemProps(suggestion, {
+                                                                className,
+                                                                style,
+                                                            })}
+                                                        >
+                                                            <span>{suggestion.description}</span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
+                                </PlacesAutocomplete>
 
                                 <label>Daily Start Time:</label>
                                 <TimeInput
@@ -171,12 +216,10 @@ export default class PostOffers extends Component {
                                 />
                                 <label>Offer valid from date</label>
                                 <Flatpickr
-                                    
                                     onChange={this.handleFromDateChanges}
                                 />
                                 <label>Offer valid to date</label>
                                 <Flatpickr
-                                    
                                     onChange={this.handleToDateChanges}
                                 /><br /><br />
                                 <select name="Status" onBlur={this.handleOtherChanges}>

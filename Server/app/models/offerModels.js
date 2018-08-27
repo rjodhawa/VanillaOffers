@@ -9,9 +9,7 @@ var newSchema = new schema({
     }],
     Details: String,
     
-    Location: [{
-        type: String
-    }],
+    Location: String,
     
     DailyStartTime: String,
     DailyStopTime: String,
@@ -29,6 +27,8 @@ var newSchema = new schema({
         type: String
     },
     userID: String,
+    Lat: Number,
+    Lon: Number
 });
 
 module.exports = mongoose.model('offers',newSchema);

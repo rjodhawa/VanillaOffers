@@ -50,10 +50,7 @@ export default class Home extends Component {
                                 <h1>{item['RestaurantName']}</h1>
                                 <h2>{item['Details']}</h2>
                                 <h3>Daily Validity:{item['DailyStartTime']} to{item['DailyStopTime']} </h3>
-                                <h4>{item['Location'].map(eachLocation =>(
-                                    <p>{eachLocation}</p>
-                                ))
-                                }</h4>
+                                <h4>{item['Location']}</h4>
                                 <h5>Valid from: {item['ValidityFromDate']} to {item['ValidityToDate']}</h5>
                                 </div>
                             ))

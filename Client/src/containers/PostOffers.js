@@ -73,30 +73,36 @@ export default class PostOffers extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        if(this.state.mainMenuOptionTypes.length!==0 & this.state.ValidityToDate !=='' &
-        this.state.Location!==''& this.state.ValidityFromDate!=='' &
-        this.state.DailyStartTime!==''& this.state.DailyStopTime!==''){
-        axios.post('http://localhost:4000/offers', {
-            RestaurantName: this.state.restaurantName,
-            Details: this.state.details,
-            MainMenuOptionType: this.state.mainMenuOptionTypes,
-            Location: this.state.Location,
-            DailyStartTime: this.state.DailyStartTime,
-            DailyStopTime: this.state.DailyStopTime,
-            ValidityFromDate: this.state.ValidityFromDate,
-            ValidityToDate: this.state.ValidityToDate,
-            Status: this.state.Status,
-            userID: cookie.load('userID'),
-            Lat: this.state.Lat,
-            Lon: this.state.Lon
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        }else{
+        if (this.state.mainMenuOptionTypes.length !== 0 & this.state.ValidityToDate !== '' &
+            this.state.Location !== '' & this.state.ValidityFromDate !== '' &
+            this.state.DailyStartTime !== '' & this.state.DailyStopTime !== '') {
+            if (this.state.DailyStartTime >= this.state.DailyStopTime) {
+                alert("Daily start time can not be after ending time")
+            } else if (this.state.ValidityFromDate >= this.state.ValidityToDate) {
+                alert("Start Date of the offer can not be after the end date");
+            } else {
+                axios.post('http://localhost:4000/offers', {
+                    RestaurantName: this.state.restaurantName,
+                    Details: this.state.details,
+                    MainMenuOptionType: this.state.mainMenuOptionTypes,
+                    Location: this.state.Location,
+                    DailyStartTime: this.state.DailyStartTime,
+                    DailyStopTime: this.state.DailyStopTime,
+                    ValidityFromDate: this.state.ValidityFromDate,
+                    ValidityToDate: this.state.ValidityToDate,
+                    Status: this.state.Status,
+                    userID: cookie.load('userID'),
+                    Lat: this.state.Lat,
+                    Lon: this.state.Lon
+                })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        } else {
             alert("Please fill out all the details before eubmitting the form");
         }
     }

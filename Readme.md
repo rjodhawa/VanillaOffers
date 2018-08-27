@@ -13,11 +13,11 @@
 2. check is server posts this offer to mlab (done)
 3. if the offer is visible on the home page (done)
 4. git push (done)
-5. push location => repeat above steps (dont)
-6. git push
-7. validations on post offer page (from date < to date. from time < to time)
-8. bug testing
-9. post offers CSS
+5. push location => repeat above steps (done)
+6. git push (done)
+7. validations on post offer page (from date < to date. from time < to time) (done)
+8. bug testing (done)
+9. post offers CSS 
 10. git push
 
 # Subtle information about the project structure

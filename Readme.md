@@ -1,14 +1,18 @@
 # Latest Updates
 08/27/2018
+8:06 PM
+All things pertaining to posting an offer is done. As a use case, a logged in user can post any offer with all the validation test pre performed.
+
+08/27/2018
 2:58 AM
-1. googleID is stored in cookies, this information is used to decide if a person should be able to see myOffers and postOffers page. Only a logged in user can see theses pages.
+googleID is stored in cookies, this information is used to decide if a person should be able to see myOffers and postOffers page. Only a logged in user can see theses pages.
 
 08/22/2018
 12:03 AM
-1. User can now login and logout (via google). I intend to addd facebook login soon.
-2. Anyone who visits the website can see all the offers currently available in the database.
+User can now login and logout (via google). I intend to addd facebook login soon.  
+Anyone who visits the website can see all the offers currently available in the database.
 
-# While posting an offer
+# While posting an offer (Posting offer done)
 1. check is this.state gets everything needed for the form to post (without location) (done)
 2. check is server posts this offer to mlab (done)
 3. if the offer is visible on the home page (done)
@@ -17,8 +21,22 @@
 6. git push (done)
 7. validations on post offer page (from date < to date. from time < to time) (done)
 8. bug testing (done)
-9. post offers CSS 
-10. git push
+9. post offers CSS (done)
+10. git push (done)
+
+# While getting an offer (Getting offer)
+1. create a nodeJS entry point to get all offers posted by a userID
+2. Create Node Backend for updation
+3. Create node backend for deletion
+4. git push
+5. Display all these offers
+6. Give the option to Delete
+7. Give the option to Update
+8. git push
+9. perform updation and deletion
+10. bug testing
+11. basic css
+12. git push
 
 # Subtle information about the project structure
 I have added react basic script to the server app. /Server contains nodejs server code and /client contains the frontend code.

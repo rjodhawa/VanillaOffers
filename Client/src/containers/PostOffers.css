@@ -3,7 +3,7 @@
     border-left: honeydew;
     border-right: honeydew;
     border-top: 1px solid #e6e6e6;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0,0,0,0);
     border-radius: 0 0 2px 2px;
   }
 
@@ -24,14 +24,7 @@
   input{
     width:100%;
   }
-  TimeInput .time-from{
-    width: 40%;
-    margin-left: 0;
+  select{
+    width:100%;
   }
-  TimeInput .time-to{
-    width: 40%;
-    margin-right: 0;
-  }
-  Label{
-    margin-left:0px;
-  }
+  

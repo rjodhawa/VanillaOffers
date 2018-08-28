@@ -55,7 +55,6 @@ export default class PostOffers extends Component {
             oldValue.push(newValue) :
             oldValue.pop(newValue);
 
-        console.log("Options selected:", oldValue);
         this.setState({
             mainMenuOptionTypes: oldValue
         });
@@ -96,7 +95,8 @@ export default class PostOffers extends Component {
                     Lon: this.state.Lon
                 })
                     .then(function (response) {
-                        console.log(response);
+                        console.log("Offer is posted");
+                        alert("Offer is posted");
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -136,7 +136,6 @@ export default class PostOffers extends Component {
         geocodeByAddress(event)
             .then(results => getLatLng(results[0]))
             .then(LatLng => {
-                console.log('success', LatLng)
                 this.setState({
                     Lat: LatLng['lat'],
                     Lon: LatLng['lng'],
@@ -153,21 +152,20 @@ export default class PostOffers extends Component {
                     userId !== 'user-id-not-available' ?
                         <div>
                             <form onSubmit={this.handleSubmit}>
-                                <label>Name:</label>
+                                <h3>Start Adding offer details:</h3><hr/>
                                 <input type="text" name="restaurantName" required
-                                    placeholder="Name" onBlur={this.handleOtherChanges}
+                                    placeholder="Name of the Place" onBlur={this.handleOtherChanges}
                                 /> <br /><br />
                                 <Select multi joinValues
                                     value={this.state.mainMenuOptionTypes}
                                     onChange={this.handleMainMenuOptionChange}
                                     options={mainMenuOptionType}
                                     placeholder={
-                                        JSON.stringify(this.state.mainMenuOptionTypes) === '[]' ? "Select Menu Option Type" : JSON.stringify(this.state.mainMenuOptionTypes)
+                                        JSON.stringify(this.state.mainMenuOptionTypes) === '[]' ? "Menu Option Type" : JSON.stringify(this.state.mainMenuOptionTypes)
                                     }
                                 /><br />
 
-                                <textarea required name="details" onBlur={this.handleOtherChanges} placeholder="Enter some details about the offer"></textarea><br /><br />
-                                <label>Select Locations for your restaurants</label>
+                                <textarea required name="details" onBlur={this.handleOtherChanges} placeholder="Details about the offer"></textarea><br /><br />
                                 <PlacesAutocomplete
                                     value={this.state.Location}
                                     onChange={this.handleLocationChange}
@@ -177,7 +175,7 @@ export default class PostOffers extends Component {
                                         <div>
                                             <input
                                                 {...getInputProps({
-                                                    placeholder: 'Search Places ...',
+                                                    placeholder: 'Select Location',
                                                     className: 'location-search-input',
                                                 })}
                                             />
@@ -205,28 +203,26 @@ export default class PostOffers extends Component {
                                             </div>
                                         </div>
                                     )}
-                                </PlacesAutocomplete>
-
-                                <label>Daily Start Time:</label>
+                                </PlacesAutocomplete><br/>
                                 <TimeInput
                                     className='time-from'
                                     ref="TimeInputWrapper"
+                                    placeholder="Daily Start Time (24hr) format"
                                     onTimeChange={this.handleStartTimeChange}
-                                />
-                                <label>Daily End Time:</label>
+                                /> <br/><br/>
                                 <TimeInput
                                     className='time-to'
                                     ref="TimeInputWrapper"
-                                    name="DailyStopTime"
+                                    placeholder="Daily Stop Time (24hr) format"
                                     onTimeChange={this.handleStopTimeChange}
-                                />
-                                <label>Offer valid from date</label>
+                                /><br/><br/>
                                 <Flatpickr
                                     onChange={this.handleFromDateChanges}
-                                />
-                                <label>Offer valid to date</label>
+                                    placeholder="Starting Date of the offer"
+                                /><br/><br/>
                                 <Flatpickr
                                     onChange={this.handleToDateChanges}
+                                    placeholder="End Date of the offer"
                                 /><br /><br />
                                 <select name="Status" onBlur={this.handleOtherChanges}>
                                     <option value="active">Activate offer</option>
